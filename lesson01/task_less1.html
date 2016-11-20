@@ -28,27 +28,20 @@
         s = ((v - u) * t1) + (v * t2);
         console.log(s)
 
+      
         //4.Даны координаты (как целые от 1 до 8) двух различных полей шахматной доски. Если конь за один ход может перейти с одного поля на другое, вывести логическое значение True, в противном случае вывести значение False.
-        var x = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
-            y = ['1', '2', '3', '4', '5', '6', '7', '8'];
-        //Начальное положение фигуры
-        knight = x[2] + y[3];
-        console.log(knight)
-            //Ход фигуры
-        knight = prompt('Введите шаг коня с поля c4');
-        console.log(knight)
-
-        if ((knight == x[2 + 2] + y[3 - 1]) || (knight == x[2 + 2] + y[3 + 1]) ||
-            (knight == x[2 - 2] + y[3 + 1]) || (knight == x[2 - 2] + y[3 - 1]) ||
-            (knight == x[2 - 1] + y[3 + 2]) || (knight == x[2 - 1] + y[3 - 2]) ||
-            (knight == x[2 + 1] + y[3 - 2]) || (knight == x[2 + 1] + y[3 + 2])) 
-			{
-             document.write('true')
+        x1 = prompt('Введите начальные координаты коня по оси х'), y1 = prompt('Введите начальные координаты коня по оси y');
+        x2 = prompt('Введите ход коня по оси х'), y2 = prompt('Введите ход коня по оси х');
+        if (x1 <= 8 && x2 <= 8 && y1 <= 8 && y2 <= 8) {
+            if ((Math.abs(x2 - x1) == 2) && (Math.abs(y2 - y1) == 1) || (Math.abs(x2 - x1) == 1) && (Math.abs(y2 - y1) == 2)) {
+                document.write('true')
+            } else {
+                document.write('false')
+            }
         } else {
-             document.write('false')
+            document.write('Вы вышли за пределы доски')
         }
-        //console.log(knight)
-    </script>
+//		</script>
 
 
 </body>
