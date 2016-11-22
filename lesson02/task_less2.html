@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <title></title>
 </head>
-<body>
+<body spellcheck="">
 
 <script>
 //Задачи 1, Задача первая.
-var s, text, text_reverse = '',
+/*var s, text, text_reverse = '',
     i = 0;
 slovo = prompt('Введите слово, а мы его перевернем при помощи цикла while');
 s = slovo.length;
@@ -19,23 +19,40 @@ while (s != i) {
     text_reverse = text_reverse + slovo.charAt(text);
 				}
 document.write('Вы ввели "<strong>' + slovo + '</strong>", а мы его перевернули и вышло "<strong>' + text_reverse + '</strong>"');
-//console.log(slovo);
+*///console.log(slovo);
 //console.log(text_reverse);
 
-/*
-var i=1, dig, summa;
+//Задачи 1, Задача 2. '29' =>1002 => 2001 => '55'  
 
-dig=5;
+var digit=29, digit_3, digit_revers='', digit_3_final, digit_4_final, i=0;
 
-while( dig!=i)
-{
-summa=i+i;
-console.log(i)
+digit_3=digit.toString(3);
+console.log(digit_3)
+var revers=digit_3.length;
+
+while (revers>i) {
 i++;
-
+digit_3_final=revers-i;
+digit_revers= digit_revers+digit_3.charAt(digit_3_final);
+console.log(digit_revers);
 }
-console.log(summa)*/
+digit_4_final=parseInt(digit_revers, 3);
+console.log(digit_4_final);
 
+
+//Задачи 1, Задача 3.
+/*var i = 1,
+    b, summa=0;
+limit = prompt('введите число');
+limit=parseInt(limit);
+while (i <= limit) {
+    summa = summa + i;
+    console.log(i)
+    console.log('s' + summa)
+	i++;
+}
+console.log('s-f' + summa)
+*/
 </script>
 </body>
 </html>
