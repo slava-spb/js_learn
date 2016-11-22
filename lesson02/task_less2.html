@@ -24,21 +24,22 @@ document.write('Вы ввели "<strong>' + slovo + '</strong>", а мы его
 
 
 //Задачи 1, Задача 2. '29' =>1002 => 2001 => '55'  
-var digit, digit_3, digit_revers='', digit_3_final, digit_4_final, i=0;
+var digit, digit_3, digit_revers = '',
+    digit_3_final, digit_4_final, i = 0;
 
-digit=prompt('Введите чилос для перевода в троичную систему')
-digit=parseInt(digit);
+digit = prompt('Введите число для перевода в троичную систему')
+digit = parseInt(digit);
 
-digit_3=digit.toString(3);
+digit_3 = digit.toString(3);
 console.log(digit_3)
-var revers=digit_3.length;
-while (revers>i) {
-i++;
-digit_3_final=revers-i;
-digit_revers= digit_revers+digit_3.charAt(digit_3_final);
-console.log(digit_revers);
+var revers = digit_3.length;
+while (revers > i) {
+    i++;
+    digit_3_final = revers - i;
+    digit_revers = digit_revers + digit_3.charAt(digit_3_final);
+    console.log(digit_revers);
 }
-digit_4_final=parseInt(digit_revers, 3);
+digit_4_final = parseInt(digit_revers, 3);
 console.log(digit_4_final);
 
 
