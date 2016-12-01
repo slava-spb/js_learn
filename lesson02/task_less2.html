@@ -24,7 +24,7 @@ document.write('Вы ввели "<strong>' + slovo + '</strong>", а мы его
 
 
 //Задачи 1, Задача 2. '29' =>1002 => 2001 => '55'  
-var digit, digit_3, digit_revers = '',
+/*var digit, digit_3, digit_revers = '',
     digit_3_final, digit_4_final, i = 0;
 
 digit = prompt('Введите число для перевода в троичную систему')
@@ -40,7 +40,7 @@ while (revers > i) {
     console.log(digit_revers);
 }
 digit_4_final = parseInt(digit_revers, 3);
-console.log(digit_4_final);
+console.log(digit_4_final);*/
 
 //Задачи 1, Задача 3.
 /*var i = 1,
@@ -55,6 +55,26 @@ while (i <= limit) {
 }
 console.log('s-f' + summa)
 */
+
+var summa='', i=1 , b=15, c=5;
+
+while (i<=b)
+{
+if (i%c==0){
+summa=summa+i+'\n';
+console.log(summa);
+}
+if (i%c!=0){
+summa=summa+i+'\t';
+}
+++i;
+}
+
+//summa=parseInt(summa);
+alert('f'+summa);
+
+
+
 </script>
 </body>
 </html>
