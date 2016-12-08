@@ -57,13 +57,16 @@ continue;
 
 var minn=-5;
 var maxx=Math.abs(minn);
-var x; 
-for (i=minn; i<=maxx;i++) 
-{x=i;
-
+var x=minn; 
+for (i=x; x<=maxx;i++) {
+if (x%2==0){
 y=5-x*x/2;
-console.log('i='+i+'y='+y);
-
+}
+else{
+y=5-x*x/2;
+}
+console.log('i:'+i+'\t'+'x:'+x+'\t'+'y:'+y);
+x=x+0.5;
 }
 
 
