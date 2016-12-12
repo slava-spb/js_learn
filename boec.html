@@ -1,0 +1,40 @@
+﻿<script>
+
+var boec={};
+boec.name='Вася';
+boec.lastname='Бэггинс'
+boec.ruczak={
+	max_predmet:7, predmets:0, max_ves:50, predmet_all_ves:0, inside:[]
+}
+
+boec.ruczak.add = function(name,ves){
+	boec.ruczak.max_predmet-=1;
+	boec.ruczak.predmets+=1;
+	boec.ruczak.predmet_all_ves+=ves;
+	x=boec.ruczak.inside.length;
+	boec.ruczak.inside[x]={};
+	boec.ruczak.inside[x].ves=ves;
+	boec.ruczak.inside[x].name=name;
+	}
+
+boec.ruczak.add('Удочга', 5)
+boec.ruczak.add('наживка', 2)
+boec.ruczak.add('леска', 1)
+boec.ruczak.add('грузила', 3)
+boec.ruczak.add('крючки', 1)
+
+
+brv = function(){
+	for(i=0; i<boec.ruczak.inside.length; i++){
+		console.log('предмет:'+ boec.ruczak.inside[i].name+'\t'+ 'вес:'+ boec.ruczak.inside[i].ves);
+//for (key in cat) {console.log('arr['+key+']='+cat[key]);}			
+	}
+}
+
+brd = function (){
+	boec.ruczak.inside.shift(alert('Удалили'+boec.ruczak.inside[length].name));
+
+}
+
+
+</script>
