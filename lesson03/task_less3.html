@@ -6,6 +6,41 @@
 </head>
 
 <body>
+<div style="text-align:center">
+<h4>Автомат</h4><br />
+<div class='txt_automat'>a</div>
+<button id="automat" >автомат</button>
+</div>
+<script>
+document.getElementById('automat').onclick=
+function (e){
+n=prompt('Размер обоймы?')
+n=parseInt(n);
+arr=[];
+x='';
+
+while (x==''){
+x=prompt('Нажми ок!');
+
+if((arr.length==0)||(arr.length<3)){
+//перезарядка
+	for (i=0; i<n; i++){
+	arr.push('патрон');
+}
+console.log('Перезаряжено. В обойме'+arr.length+'патронов');
+//var a =document.getElementsByClassName('txt_automat');
+//a.innerHTML = 'Перезаряжено. В обойме'+arr.length+'патронов';
+continue;
+}
+//выстрел
+	if ((arr.length!=0)&&(arr.length>=3)){
+	arr.splice(0,3);
+console.log('Выстрел'+arr.length+'патронов');
+continue;
+}
+}}
+</script>
+
 
 <script>
 //автомат
