@@ -1,0 +1,68 @@
+<style>
+    * {box-sizing: border-box;}
+    body {margin: 0; width: calc(100vw - 25px); height: 100vh;display: block;text-align: center; background: gray;color: white; }
+    input { padding: 10px;border: 2px solid rgba(255,255,255,0.6);background-color: transparent;color: white;text-align: center;font-size: 22px; }
+    p {font-size: 16px;}
+    #output {font-size: 30px;}
+</style>
+<h1>Шифр Цезаря</h1>
+<p>Введите сообщение:</p>
+<input type="text" id="message" value="Шифруем слово">
+<p>Задаем смещение:</p>
+<input type="text" id="shift" value="-3">
+<p>Зашифрованное слово:</p>
+<div id="output"></div>
+
+
+<script>
+    (function(){
+        window.CeasarsCipher = function(input){
+            var alphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ".toLowerCase(),
+                shiftAmount,
+                shiftedAlphabet = "",
+                OUTPUT = "",
+                STRING,
+                otherCharacters = '-=~\"\'#$%&*^:<>?/!{(|)}.1234567890\, '
+            if(typeof input === "object"){
+                shiftAmount = input.shift;
+                STRING = input.msg.toLowerCase();
+            } else {
+                return;
+            }
+            if(typeof STRING === "string" || typeof (STRING+"") === "string"){
+                shiftedAlphabet = alphabet.slice(shiftAmount);
+                shiftedAlphabet += alphabet.slice(0, shiftAmount);
+                shiftedAlphabet += otherCharacters;
+                alphabet += otherCharacters;
+                for(var i = 0; i < STRING.length; i++){
+                    var numberd = alphabet.indexOf( STRING[i] )
+                    OUTPUT += shiftedAlphabet[numberd];
+                }
+            } else {
+                return;
+            };
+            return OUTPUT;
+
+        };
+    })();
+
+    document.getElementById("message").addEventListener("input", function(){
+        var itsValue = this.value;
+        document.getElementById("output").textContent = CeasarsCipher({
+            msg: itsValue,
+            shift: document.getElementById("shift").value
+        });
+    });
+    document.getElementById("shift").addEventListener("keyup", function(){
+        var itsValue = this.value;
+        document.getElementById("output").textContent = CeasarsCipher({
+            msg: document.getElementById("message").value,
+            shift: itsValue
+        })
+    });
+
+    document.getElementById("output").textContent = CeasarsCipher({
+        msg: document.getElementById("message").value,
+        shift: document.getElementById("shift").value
+    });
+</script>
