@@ -1,68 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Шифр Цезаря</title>
+ </head>
 <style>
-    * {box-sizing: border-box;}
-    body {margin: 0; width: calc(100vw - 25px); height: 100vh;display: block;text-align: center; background: gray;color: white; }
-    input { padding: 10px;border: 2px solid rgba(255,255,255,0.6);background-color: transparent;color: white;text-align: center;font-size: 22px; }
-    p {font-size: 16px;}
-    #output {font-size: 30px;}
+    body { text-align:center}
+    input {padding: 1px;border: 2px solid blue;color: black;text-align: center;font-size: 22px; }
+    p {font-size: 16px; color:black; margin:20px 0 0}
+    #out {font-size: 30px;}
 </style>
+
+  <body>
+
 <h1>Шифр Цезаря</h1>
 <p>Введите сообщение:</p>
-<input type="text" id="message" value="Шифруем слово">
+<input type="text" id="mess" placeholder="Шифруем слово">
 <p>Задаем смещение:</p>
 <input type="text" id="shift" value="-3">
 <p>Зашифрованное слово:</p>
-<div id="output"></div>
-
+<div id="out"></div>
 
 <script>
-    (function(){
-        window.CeasarsCipher = function(input){
-            var alphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ".toLowerCase(),
-                shiftAmount,
-                shiftedAlphabet = "",
-                OUTPUT = "",
-                STRING,
-                otherCharacters = '-=~\"\'#$%&*^:<>?/!{(|)}.1234567890\, '
-            if(typeof input === "object"){
-                shiftAmount = input.shift;
-                STRING = input.msg.toLowerCase();
-            } else {
-                return;
-            }
-            if(typeof STRING === "string" || typeof (STRING+"") === "string"){
-                shiftedAlphabet = alphabet.slice(shiftAmount);
-                shiftedAlphabet += alphabet.slice(0, shiftAmount);
-                shiftedAlphabet += otherCharacters;
-                alphabet += otherCharacters;
-                for(var i = 0; i < STRING.length; i++){
-                    var numberd = alphabet.indexOf( STRING[i] )
-                    OUTPUT += shiftedAlphabet[numberd];
-                }
-            } else {
-                return;
-            };
-            return OUTPUT;
-
-        };
-    })();
-
-    document.getElementById("message").addEventListener("input", function(){
-        var itsValue = this.value;
-        document.getElementById("output").textContent = CeasarsCipher({
-            msg: itsValue,
-            shift: document.getElementById("shift").value
-        });
-    });
-    document.getElementById("shift").addEventListener("keyup", function(){
-        var itsValue = this.value;
-        document.getElementById("output").textContent = CeasarsCipher({
-            msg: document.getElementById("message").value,
-            shift: itsValue
-        })
-    });
-
-    document.getElementById("output").textContent = CeasarsCipher({
-        msg: document.getElementById("message").value,
-        shift: document.getElementById("shift").value
-    });
+	(function() {
+		window.cezar_sdvig = function(input) {
+			var alph = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ".toLowerCase(),
+				shiftAmount,
+				shift_alph = "",
+				out = "",
+				string,
+				othChar = ' 1234567890'
+			if (typeof input === "object") {
+				shiftAmount = input.shift;
+				string = input.msg.toLowerCase();
+			} else {
+				return;
+			}
+			if (typeof string === "string" || typeof(string + "") === "string") {
+				shift_alph = alph.slice(shiftAmount);
+				shift_alph += alph.slice(0, shiftAmount);
+				shift_alph += othChar;
+				alph += othChar;
+				for (var i = 0; i < string.length; i++) {
+					var numberd = alph.indexOf(string[i])
+					out += shift_alph[numberd];
+				}
+			} else {
+				return;
+			};
+			return out;
+		};
+	})();
+	
+	document.getElementById("mess").addEventListener("input", function() {
+		var itsValue = this.value;
+		document.getElementById("out").textContent = cezar_sdvig({
+			msg: itsValue,
+			shift: document.getElementById("shift").value
+		});
+	});
+	document.getElementById("shift").addEventListener("keyup", function() {
+		var itsValue = this.value;
+		document.getElementById("out").textContent = cezar_sdvig({
+			msg: document.getElementById("mess").value,
+			shift: itsValue
+		})
+	});
+	document.getElementById("out").textContent = cezar_sdvig({
+		msg: document.getElementById("mess").value,
+		shift: document.getElementById("shift").value
+	});
 </script>
+
+
+</body></html>

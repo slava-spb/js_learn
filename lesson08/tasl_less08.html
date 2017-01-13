@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+<style>
+body * { text-align:center;
+margin: 10px;
+}
+div{border: 1px solid blue;}
+
+</style>
+<h2>Перехватываем обработчик и меняем бакграунд при клике по элементу</h2>
+<form style="background-color:red">FORM
+<div style="background-color:red" >DIV
+<div style="background-color:red" >div2
+<!--<input type="checkbox" >-->
+<p style="background-color:red" >P</p>
+</div></div>
+</form>
+
+<script type='text/javascript'>
+    //getElementsByTagName(input);
+
+    currentcolor = 0;
+    color = ['red', 'green', 'blue', 'orange', 'pink', 'black'];
+
+    var t = document.getElementsByTagName('form')[0];
+    t.addEventListener('click', handler, false)
+    var t = document.getElementsByTagName('div')[0];
+    t.addEventListener('click', handler, false)
+    var t = document.getElementsByTagName('div')[1];
+    t.addEventListener('click', handler, false)
+    var t = document.getElementsByTagName('p')[0];
+    t.addEventListener('click', handler, false)
+
+
+    function handler(e) {
+        currentcolor = (currentcolor + 1) % color.length;
+        e.stopPropagation() //событие ­ не всплывать
+        //e.preventDefault() // браузер ­ стоять
+        this.style.backgroundColor = color[currentcolor];
+        //e.stopPropagation() //событие ­ не всплывать
+        console.log(this);
+        // alert(e.target+'---'+this);
+        return false // Завершение
+    }
+    //alert();
+</script>
+<br>
+<br>
+<br>
+
+<h2>Ловим событие всплытия или погружения</h2>
+
+<form class="note">
+<input type="checkbox" id="chbox" >При выключенном checked всплываем, иначе погружаемся.
+<input type="button" onclick="sel()" id="button2" value="click me">
+</form>
+  <script>
+	function sel() {
+		var elems = document.querySelectorAll('form.note, .chbox, #button2');
+		for (var i = 0; i < elems.length; i++) {
+			if (chbox.checked) {
+				//погружение 
+				elems[i].addEventListener("click", function() {}, true); // Вниз.
+				alert(elems[i].tagName + " погружение");
+				e.stopPrepogation();
+			} else {
+				//всплытие 
+				elems[i].addEventListener("click", function() {}, false); // Вверх.
+				alert("Всплытие из " + elems[i].tagName);
+				e.stopPrepogation();
+			}
+		}
+	}
+</script>
+</body>
+</html>
